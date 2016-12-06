@@ -1,7 +1,6 @@
 package com.hangapps.herome.Fragments;
 
 import android.content.Context;
-import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -10,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
+import com.hangapps.herome.Activities.MainActivity;
 import com.hangapps.herome.R;
 
 /**
@@ -91,7 +91,8 @@ public class MainFragment extends Fragment implements View.OnClickListener {
         chooseBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                MainActivity mainActivity = (MainActivity)getActivity();
+                mainActivity.loadPickPowerScreen();
             }
         });
 

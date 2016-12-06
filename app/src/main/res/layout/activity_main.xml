@@ -1,11 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.hangapps.herome.Activities.MainActivity"
-    android:padding="0dp">
+    android:padding="0dp"
+    android:orientation="vertical">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/toolbarDark"
+        android:elevation="0dp"
+        android:minHeight="0dp"
+        android:theme="?attr/actionBarTheme"
+        android:weightSum="1">
+
+        <ImageView
+            android:id="@+id/imageView3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="false"
+            android:src="@drawable/topbannerbar"/>
+    </android.support.v7.widget.Toolbar>
 
     <FrameLayout
         android:layout_width="match_parent"
@@ -13,4 +33,4 @@
         android:id="@+id/fragment_container">
 
     </FrameLayout>
-</RelativeLayout>
+</LinearLayout>

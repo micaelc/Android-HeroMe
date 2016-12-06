@@ -8,9 +8,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 import com.hangapps.herome.Fragments.MainFragment;
+import com.hangapps.herome.Fragments.PickPowerFragment;
 import com.hangapps.herome.R;
 
-public class MainActivity extends AppCompatActivity implements MainFragment.MainFragmentInteractionListener {
+public class MainActivity extends AppCompatActivity implements MainFragment.MainFragmentInteractionListener, PickPowerFragment.PickPowerInteractionListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,17 +22,26 @@ public class MainActivity extends AppCompatActivity implements MainFragment.Main
         Fragment fragment = manager.findFragmentById(R.id.fragment_container);
 
         // if fragment does not exist let's create it
-        if( fragment == null){
+        if (fragment == null) {
             fragment = new MainFragment();
             manager.beginTransaction().add(R.id.fragment_container, fragment).commit();
         }
 
 
+    }
 
+    public void loadPickPowerScreen() {
+        PickPowerFragment pickPowerFragment = new PickPowerFragment();
+        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, pickPowerFragment).addToBackStack(null).commit();
     }
 
     @Override
     public void onMainFragmentInteraction(Uri uri) {
+
+    }
+
+    @Override
+    public void onPickPowerFragmentInteraction(Uri uri) {
 
     }
 }
