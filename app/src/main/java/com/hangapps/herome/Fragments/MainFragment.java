@@ -96,8 +96,6 @@ public class MainFragment extends Fragment implements View.OnClickListener {
             }
         });
 
-
-
         return view;
     }
 
@@ -139,13 +137,18 @@ public class MainFragment extends Fragment implements View.OnClickListener {
         Button btn = (Button)view;
         int leftDrawable = 0;
 
+        MainActivity mainActivity = (MainActivity)getActivity();
+
         // see witch button is pressed and manage the selected drawable
         if (btn == accidentBtn){
             leftDrawable = R.drawable.lightning;
+            mainActivity.setOriginSelected(MainActivity.ORIGIN_ACCIDENT);
         } else if (btn == geneticBtn){
             leftDrawable = R.drawable.atomic;
+            mainActivity.setOriginSelected(MainActivity.ORIGIN_MUTATION);
         } else if (btn == bornBtn){
             leftDrawable = R.drawable.rocket;
+            mainActivity.setOriginSelected(MainActivity.ORIGIN_BORN);
         }
 
         //setting the clicked button

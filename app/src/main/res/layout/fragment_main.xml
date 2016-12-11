@@ -48,10 +48,14 @@
             android:paddingEnd="10dp"
             android:layout_marginTop="5dp"
             android:layout_marginBottom="10dp"
-            android:textAlignment="center" />
+            android:textAlignment="center"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textAllCaps="false"
+            android:drawableRight="@drawable/itemunselected" />
 
         <Button
-            android:text="Genetic mutation"
+            android:text="Genetic Mutation"
             android:layout_width="match_parent"
             android:id="@+id/geneticBtn"
             android:layout_marginStart="30dp"
@@ -64,7 +68,11 @@
             android:paddingEnd="10dp"
             android:layout_marginTop="5dp"
             android:layout_marginBottom="10dp"
-            android:textAlignment="center" />
+            android:textAlignment="center"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textAllCaps="false"
+            android:drawableRight="@drawable/itemunselected" />
 
         <Button
             android:text="Born with them"
@@ -80,7 +88,11 @@
             android:paddingEnd="10dp"
             android:layout_marginTop="5dp"
             android:layout_marginBottom="10dp"
-            android:textAlignment="center" />
+            android:textAlignment="center"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textAllCaps="false"
+            android:drawableRight="@drawable/itemunselected" />
 
         <Button
             android:text="Choose Powers"

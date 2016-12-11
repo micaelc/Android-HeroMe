@@ -7,7 +7,10 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewOutlineProvider;
+import android.widget.Button;
 
+import com.hangapps.herome.Activities.MainActivity;
 import com.hangapps.herome.R;
 
 /**
@@ -18,7 +21,7 @@ import com.hangapps.herome.R;
  * Use the {@link PickPowerFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class PickPowerFragment extends Fragment {
+public class PickPowerFragment extends Fragment implements View.OnClickListener{
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -27,6 +30,14 @@ public class PickPowerFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+
+    private Button turtleBtn;
+    private Button lightningBtn;
+    private Button flightBtn;
+    private Button webSlingingBtn;
+    private Button laserVisionBtn;
+    private Button superStrengthBtn;
+    private Button backstoryBtn;
 
     private PickPowerInteractionListener mListener;
 
@@ -64,8 +75,39 @@ public class PickPowerFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.fragment_pick_power, container, false);
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_pick_power, container, false);
+
+        turtleBtn = (Button)view.findViewById(R.id.turtleBtn);
+        lightningBtn = (Button)view.findViewById(R.id.lightningBtn);
+        flightBtn = (Button)view.findViewById(R.id.flightBtn);
+        webSlingingBtn = (Button)view.findViewById(R.id.webSlingingBtn);
+        laserVisionBtn = (Button)view.findViewById(R.id.laserVisionBtn);
+        superStrengthBtn= (Button)view.findViewById(R.id.superStrengthBtn);
+        backstoryBtn = (Button)view.findViewById(R.id.backstoryBtn);
+
+        // set Show Backstory Button to disable
+        backstoryBtn.setEnabled(false);
+        backstoryBtn.getBackground().setAlpha(128);
+
+        turtleBtn.setOnClickListener(this);
+        lightningBtn.setOnClickListener(this);
+        flightBtn.setOnClickListener(this);
+        webSlingingBtn.setOnClickListener(this);
+        laserVisionBtn.setOnClickListener(this);
+        superStrengthBtn.setOnClickListener(this);
+
+        backstoryBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                MainActivity ma = (MainActivity)getActivity();
+                ma.loadBackstoryScreen();
+            }
+        });
+
+
+
+        return view;
     }
 
     // TODO: Rename method, update argument and hook method into UI event
@@ -105,5 +147,49 @@ public class PickPowerFragment extends Fragment {
     public interface PickPowerInteractionListener {
         // TODO: Update argument type and name
         void onPickPowerFragmentInteraction(Uri uri);
+    }
+    @Override
+    public void onClick(View view){
+
+        backstoryBtn.setEnabled(true);
+        backstoryBtn.getBackground().setAlpha(255);
+
+        // reset the buttons
+        turtleBtn.setCompoundDrawablesWithIntrinsicBounds(R.drawable.turtlepower,0,R.drawable.itemunselected,0);
+        lightningBtn.setCompoundDrawablesWithIntrinsicBounds(R.drawable.thorshammer,0,R.drawable.itemunselected,0);
+        flightBtn.setCompoundDrawablesWithIntrinsicBounds(R.drawable.supermancrest,0,R.drawable.itemunselected,0);
+        webSlingingBtn.setCompoundDrawablesWithIntrinsicBounds(R.drawable.spiderweb,0,R.drawable.itemunselected,0);
+        laserVisionBtn.setCompoundDrawablesWithIntrinsicBounds(R.drawable.laservision,0,R.drawable.itemunselected,0);
+        superStrengthBtn.setCompoundDrawablesWithIntrinsicBounds(R.drawable.superstrength,0,R.drawable.itemunselected,0);
+
+        //grab the view
+        Button btn = (Button)view;
+        int leftDrawable = 0;
+
+        MainActivity mainActivity = (MainActivity)getActivity();
+
+        // see witch button is pressed and manage the selected drawable
+        if (btn == turtleBtn){
+            leftDrawable = R.drawable.turtlepower;
+            mainActivity.setPowerSeleceted(MainActivity.POWER_TURTLE);
+        } else if (btn == lightningBtn){
+            leftDrawable = R.drawable.thorshammer;
+            mainActivity.setPowerSeleceted(MainActivity.POWER_LIGHTNING);
+        } else if (btn == flightBtn){
+            leftDrawable = R.drawable.supermancrest;
+            mainActivity.setPowerSeleceted(MainActivity.POWER_FLIGHT);
+        } else if (btn == webSlingingBtn){
+            leftDrawable = R.drawable.spiderweb;
+            mainActivity.setPowerSeleceted(MainActivity.POWER_WEB_SLINGING);
+        } else if (btn == laserVisionBtn){
+            leftDrawable = R.drawable.laservision;
+            mainActivity.setPowerSeleceted(MainActivity.POWER_LASER_VISION);
+        } else if (btn == superStrengthBtn){
+            leftDrawable = R.drawable.superstrength;
+            mainActivity.setPowerSeleceted(MainActivity.POWER_SUPER_STRENGTH);
+        }
+
+        //setting the clicked button
+        btn.setCompoundDrawablesWithIntrinsicBounds(leftDrawable,0,R.drawable.itemselected,0);
     }
 }
