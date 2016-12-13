@@ -55,6 +55,15 @@ public class MainActivity extends AppCompatActivity implements MainFragment.Main
         getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, backstoryFragment).addToBackStack(null).commit();
     }
 
+    public void loadMainFragment() {
+        // pop all fragments and restart main fragment
+        FragmentManager fm = getSupportFragmentManager();
+        int count = fm.getBackStackEntryCount();
+        for(int i = 0; i < count; ++i) {
+            fm.popBackStackImmediate();
+        }
+    }
+
     @Override
     public void onMainFragmentInteraction(Uri uri) {
 
@@ -85,6 +94,7 @@ public class MainActivity extends AppCompatActivity implements MainFragment.Main
     public void setPowerSeleceted(String powerSeleceted) {
         this.powerSelected = powerSeleceted;
     }
+
 
 
 }
